@@ -41,12 +41,34 @@ xhr.onload = function () {
       card.className = "card";
       card.style.width = "18rem";
 
+      let amenities = [];
+      try {
+        amenities = JSON.parse(item.amenities);
+      } catch (e) {
+        console.warn("Could not parse amenities for:", item.name);
+      }
+
       card.innerHTML = ` 
         <img src="${item.picture_url}" class="card-img-top" alt="${item.name}">
         <div class="card-body">
            <h5 class="card-title">${item.name}</h5>
+           <h5 class="details-h5"><b> About: </b></h5>
            <p class="card-text">${item.description}</p>
-           <a href="${item.listing_url}" class="btn btn-primary">See listing on AirBnb</a>
+           <h5 class="details-h5"><b> Amenities: </b></h5>
+           <ul class="amenity">${amenities
+             .slice(0, 5)
+             .map((amenity) => `<li>${amenity}</li>`)
+             .join("")}</ul>
+            <h5 class="details-h5"><b>Meet the Host(s): </b><h5>
+            <div class="host-info"> 
+                <img src="${item.host_picture_url}" class="host-pic" alt="${item.host_name}"> 
+                <p class="card-text">${item.host_name}</p>
+            </div>
+            <div style="display: flex; align-items:baseline; gap: 4px;">
+                <h5 class="details-h5"><b> Pricing: </b></h5>
+                <p class="card-text"> ${item.price}/night<p>
+            </div>
+           <a href="${item.listing_url}" class="btn btn-primary">Book listing on AirBnb</a>
          </div>
         `;
 
