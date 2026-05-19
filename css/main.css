@@ -1,5 +1,5 @@
 body {
-    font-family:Arial, Helvetica, sans-serif ;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 .card-text{
@@ -16,6 +16,7 @@ body {
     height: 7rem;
 }
 
+
 .card-body{
     height: 50rem;
     overflow: scroll;
@@ -25,10 +26,16 @@ body {
     display:flex; 
     align-items: top;
     gap: 10px;
+    margin-bottom: 0px;
 }
 
 .host-pic{
     width: 7rem;
     height: 7rem;
     border-radius: 5%;
+}
+
+h1{
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
